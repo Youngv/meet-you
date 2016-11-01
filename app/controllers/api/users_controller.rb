@@ -1,0 +1,14 @@
+module Api
+  class UsersController < ApplicationController
+    before_action :current_user
+
+    def create
+
+    end
+
+    def auth_token
+      @current_user.regenerate_auth_token
+      render json: {auth_token: @current_user.auth_token}
+    end
+  end
+end

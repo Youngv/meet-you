@@ -1,0 +1,19 @@
+zh-CN:
+  activerecord:
+    models:
+      user: "用户"
+      meetup: "聚会"
+      comment: "评论"
+    attributes:
+      user:
+        name: "昵称"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "确认密码"
+      meetup:
+        title: "标题"
+        date: "时间"
+        address: "地点"
+        content: "内容"
+      comment:
+        content: "内容"

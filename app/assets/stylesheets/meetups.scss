@@ -1,0 +1,79 @@
+.meetup-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.meetup-list li {
+  line-height: 20px;
+  padding: 7px 9px 9px 9px;
+  text-align: left;
+  border-bottom: 1px solid #e6e8ed;
+}
+
+.meetup-title {
+  display: block;
+  color: #697c91;
+  margin-left: 1px;
+  padding-bottom: 1px;
+}
+
+.meetup-info {
+  font-size: 16px;
+  color: #697c91;
+  margin-top: 3px;
+  margin-bottom: 0;
+}
+
+.new-meetup {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.meetup-detail {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 15px 15px 15px;
+}
+
+.meetup-comments {
+  border-radius: 0 0 6px 6px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-top: none;
+}
+
+#new_comment {
+  margin-top: 10px;
+}
+
+.new-comment-btn {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.meetup-comments{
+  counter-reset: comment-floor;
+}
+
+.meetup-comments > .comment{
+  position: relative;
+}
+
+.meetup-comments > .comment:before{
+  content: "#"counter(comment-floor, decimal)"";
+  counter-increment: comment-floor;
+  position: absolute;
+  top: 0;
+  right: 4px;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+.comment {
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}

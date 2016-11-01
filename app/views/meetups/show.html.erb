@@ -1,0 +1,60 @@
+<h2>
+  <%= @meetup.title %>
+  <% if current_user && @meetup.user.id == current_user.id %>
+    <small><%= link_to '编辑', edit_meetup_path(@meetup) %> | <%= link_to '删除', @meetup, method: :delete, data: {confirm: '确定删除吗？'} %></small>
+  <% end %>
+</h2>
+
+<div class="meetup-detail">
+  <p>
+    <strong>发起人</strong><br>
+    <%= @meetup.user.name %>
+  </p>
+
+  <p>
+    <strong>时间</strong><br>
+    <%= @meetup.date.strftime('%Y年%m月%d日 %H:%M') %>
+  </p>
+
+  <p>
+    <strong>地点</strong><br>
+    <%= @meetup.address %>
+  </p>
+
+  <p>
+    <strong>内容</strong><br>
+    <%= simple_format @meetup.content %>
+  </p>
+</div>
+
+<div class="meetup-comments">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <strong><%= comment.user.name %> <small>发表于 <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %></small></strong>
+      <%=simple_format comment.content %>
+    </div>
+  <% end %>
+</div>
+
+<% if current_user %>
+    <%= form_for(@comment, html: {class: "form-horizontal", role: "form"}) do |f| %>
+        <%= f.hidden_field :meetup_id %>
+
+        <div class="form-group">
+          <div class="col-md-12">
+            <%= f.text_area :content, class: "form-control" %>
+            <%= f.submit '发表评论', class: "btn btn-primary new-comment-btn" %>
+          </div>
+        </div>
+
+        <% if @comment.errors.any? %>
+            <ul>
+              <% @comment.errors.full_messages.each do |message| %>
+                  <li class="text-danger"><%= message %></li>
+              <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+<% else %>
+    <p>请登录后发表评论！</p>
+<% end %>

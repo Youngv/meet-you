@@ -1,0 +1,5 @@
+<p>你好,</p>
+
+<p>感谢你注册 Meet You！请点击下面的链接来验证你的邮箱：</p>
+
+<%= link_to '验证邮箱', confirm_email_url(@user.confirm_token) %>

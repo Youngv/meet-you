@@ -1,0 +1,15 @@
+<ul class="meetup-list">
+  <% @meetups.each do |meetup| %>
+    <li>
+      <span class="meetup-title"><%= link_to meetup.title, meetup_path(meetup) %></span>
+      <span class="meetup-info">
+        由 <%= meetup.user.name %> 创建于 <%= meetup.created_at.strftime('%Y年%m月%d日 %H:%M') %> |
+        <%= meetup.comments_count %> 条评论
+      </span>
+    </li>
+  <% end %>
+</ul>
+
+<div class="new-meetup">
+  <%= link_to '发起聚会', new_meetup_path, class: 'btn btn-success' %>
+</div>

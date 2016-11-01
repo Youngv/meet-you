@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>登录</h1>
+</div>
+
+<%= form_tag('/login', class: "form-horizontal", role: "form") do %>
+    <% if @user && @user.errors.any? %>
+        <div class="alert alert-danger alert-dismissable" role="alert">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4>你提交的数据有<%= @user.errors.count %>个问题：</h4>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= label_tag :email, '邮箱', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= text_field_tag :email, @user.try(:email), class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag :password, '密码', class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= submit_tag '提交', class: "btn btn-primary" %>
+      </div>
+    </div>
+<% end %>
+
