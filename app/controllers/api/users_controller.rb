@@ -1,6 +1,6 @@
 module Api
-  class UsersController < ApplicationController
-    before_action :current_user
+  class UsersController < ApiController
+    before_action :authorized_user
 
     def create
 

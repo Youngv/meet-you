@@ -27,6 +27,8 @@ class TokenAuthorizer
 
     env['authorized_user'] = @authorized_user if @authorized_user
 
+    @logger.info "User: #{env['authorized_user']}"
+
     @app.call(env)
   end
 
